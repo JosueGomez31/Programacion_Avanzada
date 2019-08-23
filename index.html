@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>Servicios Web</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	function cargarCantones(idProvincia){
+		$("#distrito").html("<option value=''>Elija una opcion</option>");
+		$.ajax({
+			url: "https://ubicaciones.paginasweb.cr/provincia/"+idProvincia+"/cantones.json",
+			dataType: 'json'
+		}).done(function(data) {
+				$("#canton").html("<option value=''>Elija una opcion</option>");
+			for(canton in data){
+				$("#canton").append("<option value='"+canton+"'> "+data[canton]+" </option>");			
+			}
+		});
+	
+	}
+	
+	function cargarDistritos(idCanton){
+		var idProvincia = $("#provincia").val();
+		$.ajax({
+			url: "https://ubicaciones.paginasweb.cr/provincia/"+idProvincia+"/canton/"+idCanton+"/distritos.json",
+			dataType: 'json'
+		}).done(function(data) {
+				$("#distrito").html("<option value=''>Elija una opcion</option>");
+			for(distrito in data){
+				$("#distrito").append("<option value='"+distrito+"'> "+data[distrito]+" </option>");			
+			}
+		});
+	
+	}
+	
+	function cargarDatos(cedula){
+		
+		$.ajax({
+			url: "https://apis.gometa.org/cedulas/"+cedula,
+			dataType: 'json'
+		}).done(function(data) {
+		console.log(data.results[0]);
+		$("#nombre").val(data.results[0].firstname);
+		$("#primer_apellido").val(data.results[0].lastname1);
+		$("#segundo_apellido").val(data.results[0].lastname2);	
+				
+		});
+	}
+	
+	
+	
+	
+</script>
+</head>
+
+<form>
+
+Cedula: <input type="number" name="cedula" id="cedula" value="" onchange="cargarDatos(this.value)" ></input><br/>
+Nombre de pila: <input type="text" name="nombre" id="nombre" readonly value="" ></input><br/>
+Primer apellido: <input type="text" name="primer_apellido" id="primer_apellido" readonly value="" ></input><br/>
+Segundo apellido: <input type="text" name="segundo_apellido" id="segundo_apellido" readonly value="" ></input><br/>
+Telefono: <input type="number" name="telefono" id="telefono" value="" ></input><br/>
+Provincia:
+<select name="provincia" id="provincia" value="" onchange="cargarCantones(this.value)">
+<option value="">Elija una opcion</option>
+<option value="1">San Jose</option>
+<option value="2">Alajuela</option>
+<option value="3">Cartago</option>
+<option value="4">Heredia</option>
+<option value="5">Guanacaste</option>
+<option value="6">Puntarenas</option>
+<option value="7">Limon</option>
+</select><br/>
+Canton:
+<select name="canton" id="canton" value="" onchange="cargarDistritos(this.value)">
+<option value="">Elija una opcion</option>
+</select><br/>
+Distrito:
+<select name="distrito" id="distrito" value="">
+<option value="">Elija una opcion</option>
+</select><br/>
+Direccion exacta:
+<textarea name="dir_exacta" name="dir_exacta" cols="20" rows="5" value=""></textarea><br/>
+<input name="enviar_btn" id="enviar_btn" type="button" value="Enviar">
+
+
+
+
+
+
+
+
+
+
+</form>
+
+</body>
+</html>
