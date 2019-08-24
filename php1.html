@@ -1,0 +1,52 @@
+<!DOCTYPE html
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Datos</title>
+</head>
+
+<body>
+
+<h3>Ingreso de datos</h3>
+
+<form action="/php/insertar_cv.php" method="post" enctype="multipart/form-data">
+Nombre <br/>
+<input type="text" name="nombre" value="" size="20" maxlength="30" />
+
+<br/>
+
+Apellidos <br/>
+<input type="text" name="apellidos" value="" size="50" maxlength="80" />
+
+<br/>
+
+Contraseña <br/>
+<input type="password" name="contrasena" value="" maxlength="10" />
+
+<br/>
+
+Direccion <br/>
+<textarea name="textarea" rows="10" cols="20"></textarea>
+
+<br/>
+
+Cedula <br/>
+<input type="radio" name="sexo" value="hombre" checked="checked" /> Hombre <br/>
+<input type="radio" name="sexo" value="mujer" /> Mujer
+
+<br/><br/>
+
+<input name="tarea" type="checkbox" value="Tarea" checked="checked"/> Tarea lista
+
+<br/><br/>
+
+<input type="reset" name="limpiar" value="Borrar los datos introducidos" />
+
+
+</form>
+
+</body>
+
+</html>
