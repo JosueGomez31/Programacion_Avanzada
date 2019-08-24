@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Expresiones</title>
+</head>
+
+<body>
+
+<h3>Ejercicio</h3>
+
+<form action="/php/insertar_cv.php" method="post" enctype="multipart/form-data">
+	<br/>
+Usuario: <input type="text" name="nombre" placeholder="Por ejemplo, Juan"
+                  minlength="5" maxlength="40" required>
+	<br/>
+					<br/>
+  Password: <input type="password" name="pass" placeholder="Contraseña"
+                  minlength="7" required>
+					<br/>
+		<br/>			
+Email: <input type="email" name="email" size="30" placeholder="Por ejemplo, hola@progra.com" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" required>
+<br/>
+					
+	<br/>				
+Fecha nacimiento: <input type="date" name="cumpleanios" step="1" min="1900-01-01" max="2019-12-31" value="1900-01-01" required></input><br/>					
+
+<br/><br/>
+
+<input id="email" name="email" type="hidden" value="5">
+
+<br/><br/>
+
+<input type="submit" name="enviar" value="Guardar cambios" />
+<input type="reset" name="limpiar" value="Borrar los datos introducidos" />
+
+
+</form>
+
+</body>
+
+</html>
