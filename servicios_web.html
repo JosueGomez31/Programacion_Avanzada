@@ -34,8 +34,8 @@
 	function cargarDatos(cedula){
 		
 		$.ajax({
-			url: "https://apis.gometa.org/cedulas/"+cedula,
-			dataType: 'json'
+		url: "https://apis.gometa.org/cedulas/"+cedula,	
+		dataType: 'json'
 		}).done(function(data) {
 		console.log(data.results[0]);
 		$("#nombre").val(data.results[0].firstname);
